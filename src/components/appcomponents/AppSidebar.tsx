@@ -5,7 +5,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import { ReactNode } from "react";
 import GetIcon from "./GetIcon";
 
-
 import menuRoutes from "./menu.json";
 import { menuRouteType, routeType } from "@/types/appSidebarDatatypes";
 
@@ -48,7 +47,7 @@ function AppSidebar() {
         {menuRoutes?.routes?.map((menuItem: menuRouteType, index: number) => {
           return (
             <div key={index} className="flex flex-col gap-4">
-              <div className="text-primary-foreground/40 -ml-3 font-bold text-[10px]">
+              <div className="text-sidebar-foreground/40 -ml-3 font-bold text-[10px]">
                 {menuItem?.heading.toUpperCase()}
               </div>
 
@@ -74,12 +73,12 @@ function AppSidebar() {
                                 key={route?.key}
                                 title={route?.title}
                                 classNames={{
-                                  title: "text-primary-foreground text-xs",
+                                  title: "text-sidebar-foreground text-xs",
                                   content: "pl-5  flex flex-col gap-3 ",
                                 }}
                               >
                                 {route?.subPages?.map((item, index) => (
-                                  <div className="flex items-center gap-3 text-primary-foreground cursor-pointer">
+                                  <div className="flex items-center gap-3 text-sidebar-foreground cursor-pointer">
                                     <GetIcon icon={item?.icon} />
                                     <div>{item?.title}</div>
                                   </div>
@@ -101,7 +100,7 @@ function AppSidebar() {
           onClick={() => {
             handleMenuItemClick("1", DASHBOARD, DASHBOARD_DESC, "dashboard");
           }}
-          className={` cursor-pointer  flex items-center gap-3  ${selectedMenu?.key === "1" && !selectedMenu?.parentKey ? "text-primary-foreground" : "text-primary-foreground/60"} hover:text-primary-foreground `}
+          className={` cursor-pointer  flex items-center gap-3  ${selectedMenu?.key === "1" && !selectedMenu?.parentKey ? "text-sidebar-foreground" : "text-primary-foreground/60"} hover:text-primary-foreground `}
         >
           <GetIcon icon="dashboard" />
           {DASHBOARD}

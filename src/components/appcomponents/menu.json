@@ -51,56 +51,6 @@
               "icon": "reports"
             }
           ]
-        },
-        {
-          "title": "Dashboard",
-          "desc": "View And analyse users,organisation and more...",
-          "key": "1",
-          "parentKey": null,
-          "subPages": null,
-          "icon": "dashboard"
-        },
-        {
-          "title": "Dashboard",
-          "desc": "View And analyse users,organisation and more...",
-          "key": "1",
-          "parentKey": null,
-          "subPages": null,
-          "icon": "dashboard"
-        },
-        {
-          "title": "Dashboard",
-          "desc": "View And analyse users,organisation and more...",
-          "key": "1",
-          "parentKey": null,
-          "subPages": null,
-          "icon": "dashboard"
-        },
-        {
-          "title": "Organisation Management",
-          "desc": null,
-          "key": "2",
-          "parentKey": null,
-          "icon": "org",
-
-          "subPages": [
-            {
-              "title": "Manage Organisation",
-              "desc": "Manage Organisation desc helo world",
-              "key": "1",
-              "parentKey": "2",
-              "subPages": null,
-              "icon": "manageOrg"
-            },
-            {
-              "title": "Organisation Report ",
-              "desc": "Manage Organisation reports and more",
-              "key": "2",
-              "parentKey": "2",
-              "subPages": null,
-              "icon": "reports"
-            }
-          ]
         }
       ]
     }
