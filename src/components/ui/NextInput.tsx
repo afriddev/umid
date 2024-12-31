@@ -1,6 +1,5 @@
-import { Input as NextInput } from "@nextui-org/input";
-import { ReactNode } from "react";
-import { FaUser } from "react-icons/fa";
+import { Input } from "@nextui-org/input";
+import { ReactNode, useEffect, useState } from "react";
 import GetIcon from "../appcomponents/GetIcon";
 
 interface InputInterface {
@@ -25,7 +24,7 @@ interface InputInterface {
   labelClassName?: string;
 }
 
-function Input({
+function NextInput({
   label,
   labelPlacement = "inside",
   name,
@@ -46,13 +45,24 @@ function Input({
   inputClassName,
   labelClassName,
 }: InputInterface) {
+  const [clicked, setInputClicked] = useState<boolean>(false);
+
   function getIcon(): ReactNode {
     if (icon) {
       return <GetIcon icon={icon} />;
     }
   }
+
   return (
-    <div className="relative flex items-center">
+    <div
+      onClick={() => {
+        setInputClicked(true);
+      }}
+      onBlur={() => {
+        setInputClicked(false);
+      }}
+      className="relative flex items-center"
+    >
       {icon && (
         <div
           className={`absolute  ${startIcon ? "pl-2 left-0" : endIcon ? "pr-2 right-0" : ""} `}
@@ -61,13 +71,13 @@ function Input({
         </div>
       )}
 
-      <NextInput
+      <Input
         errorMessage={errorMessage}
         variant={variant}
-name={name}
+        name={name}
         label={label}
         type={type}
-        placeholder={placeholder}
+        placeholder={clicked ? placeholder : ""}
         isRequired={isRequired}
         pattern={pattern}
         minLength={minLength}
@@ -75,14 +85,14 @@ name={name}
         isDisabled={isDisabled}
         labelPlacement={labelPlacement}
         isClearable={isClearable}
-        className={`   h-10  ${className} text-background `}
+        className={`   h-11  ${className} `}
         classNames={{
-          input: ` ${icon && "pl-4"} ${inputClassName} `,
-          label: ` ${icon && "pl-4"} ${labelClassName}`,
+          input: ` ${icon && "pl-4"} ${inputClassName} text-xs`,
+          label: ` ${icon && "pl-4"} ${labelClassName} `,
         }}
       />
     </div>
   );
 }
 
-export default Input;
+export default NextInput;

@@ -64,17 +64,22 @@ function AppSidebar() {
                         </div>
                       )}
 
-                      <div className="">
+                      <div className="w-full">
                         {route?.subPages && route?.subPages?.length > 0 && (
-                          <div className="">
-                            <Accordion className="group p-0 flex items-center  h-4  m-0 py-0  ">
+                          <div className="w-full">
+                            <Accordion
+                              fullWidth={true}
+                              className="group w-full p-0 flex items-center "
+                            >
                               <AccordionItem
+                              startContent={<GetIcon icon={route?.icon} />}
+                                className=" flex flex-col   h-fit -mt-4 -mb-4   w-full"
                                 indicator={getIndicatorIcons}
                                 key={route?.key}
                                 title={route?.title}
                                 classNames={{
-                                  title: "text-sidebar-foreground text-xs",
-                                  content: "pl-5  flex flex-col gap-3 ",
+                                  title: "text-sidebar-foreground  text-sm",
+                                  content: "pl-5 -mt-3  flex flex-col gap-3",
                                 }}
                               >
                                 {route?.subPages?.map((item, index) => (

@@ -1,4 +1,4 @@
-import { Button as NextButton } from "@nextui-org/button";
+import { Button } from "@nextui-org/button";
 import { ReactNode } from "react";
 import { FaUser } from "react-icons/fa";
 
@@ -16,9 +16,10 @@ interface ButtonInterface {
   endIcon?: boolean;
   startIcon?: boolean;
   icon?: string;
+  type?:"submit" | "button"
 }
 
-function Button({
+function NextButton({
   children,
   radius = "sm",
   color = "primary",
@@ -32,8 +33,8 @@ function Button({
   endIcon = true,
   startIcon = false,
   icon,
+  type="button"
 }: ButtonInterface) {
-    
   function getIcon(): ReactNode {
     switch (icon) {
       case "user":
@@ -42,7 +43,8 @@ function Button({
   }
 
   return (
-    <NextButton
+    <Button
+    type={type}
       variant={variant}
       radius={radius}
       fullWidth={fullWidth}
@@ -56,8 +58,8 @@ function Button({
       endContent={endIcon && !startIcon ? getIcon() : false}
     >
       {children}
-    </NextButton>
+    </Button>
   );
 }
 
-export default Button;
+export default NextButton;
