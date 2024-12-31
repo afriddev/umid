@@ -9,6 +9,7 @@ interface InputInterface {
   variant?: "bordered" | "flat" | "faded";
   errorMessage?: string;
   isRequired?: boolean;
+  name?: string;
   type?: string;
   pattern?: string;
   minLength?: number;
@@ -27,6 +28,7 @@ interface InputInterface {
 function Input({
   label,
   labelPlacement = "inside",
+  name,
   variant = "bordered",
   errorMessage,
   isRequired = false,
@@ -50,35 +52,22 @@ function Input({
     }
   }
   return (
-    <div className="relative flex items-center">
-      {icon && (
-        <div
-          className={`absolute  ${startIcon ? "pl-2 left-0" : endIcon ? "pr-2 right-0" : ""} `}
-        >
-          {getIcon()}
-        </div>
-      )}
-
-      <NextInput
-        errorMessage={errorMessage}
-        variant={variant}
-        label={label}
-        type={type}
-        placeholder={placeholder}
-        isRequired={isRequired}
-        pattern={pattern}
-        minLength={minLength}
-        maxLength={maxLength}
-        isDisabled={isDisabled}
-        labelPlacement={labelPlacement}
-        isClearable={isClearable}
-        className={`   h-10  ${className} text-background `}
-        classNames={{
-          input: ` ${icon && "pl-4"} ${inputClassName} `,
-          label: ` ${icon && "pl-4"} ${labelClassName}`,
-        }}
-      />
-    </div>
+    <NextInput
+      errorMessage={errorMessage}
+      variant={variant}
+      label={label}
+      type={type}
+      placeholder={placeholder}
+      isRequired={isRequired}
+      pattern={pattern}
+      minLength={minLength}
+      maxLength={maxLength}
+      isDisabled={isDisabled}
+      labelPlacement={labelPlacement}
+      startContent={startIcon ? getIcon() : false}
+      endContent={endIcon && !startIcon ? getIcon() : false}
+      className={` ${className}`}
+    />
   );
 }
 
