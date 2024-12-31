@@ -52,22 +52,36 @@ function Input({
     }
   }
   return (
-    <NextInput
-      errorMessage={errorMessage}
-      variant={variant}
-      label={label}
-      type={type}
-      placeholder={placeholder}
-      isRequired={isRequired}
-      pattern={pattern}
-      minLength={minLength}
-      maxLength={maxLength}
-      isDisabled={isDisabled}
-      labelPlacement={labelPlacement}
-      startContent={startIcon ? getIcon() : false}
-      endContent={endIcon && !startIcon ? getIcon() : false}
-      className={` ${className}`}
-    />
+    <div className="relative flex items-center">
+      {icon && (
+        <div
+          className={`absolute  ${startIcon ? "pl-2 left-0" : endIcon ? "pr-2 right-0" : ""} `}
+        >
+          {getIcon()}
+        </div>
+      )}
+
+      <NextInput
+        errorMessage={errorMessage}
+        variant={variant}
+name={name}
+        label={label}
+        type={type}
+        placeholder={placeholder}
+        isRequired={isRequired}
+        pattern={pattern}
+        minLength={minLength}
+        maxLength={maxLength}
+        isDisabled={isDisabled}
+        labelPlacement={labelPlacement}
+        isClearable={isClearable}
+        className={`   h-10  ${className} text-background `}
+        classNames={{
+          input: ` ${icon && "pl-4"} ${inputClassName} `,
+          label: ` ${icon && "pl-4"} ${labelClassName}`,
+        }}
+      />
+    </div>
   );
 }
 
