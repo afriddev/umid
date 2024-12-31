@@ -13,9 +13,7 @@ function Home() {
           <NextInput
             isRequired={true}
             label="Email Id"
-            
             placeholder="Please enter Email Id"
-
             name={"email"}
             type="email"
             errorMessage="please enter a valid Email"
@@ -36,7 +34,7 @@ function Home() {
             startIcon={true}
           />
 
-          <NextButton type="submit"  color="primary" variant="solid">
+          <NextButton type="submit" color="primary" variant="solid">
             Submit
           </NextButton>
         </Form>

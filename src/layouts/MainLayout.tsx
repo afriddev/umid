@@ -7,6 +7,7 @@ interface MainLayoutInterface {
   children: ReactNode;
 }
 
+
 function MainLayout({ children }: MainLayoutInterface) {
   return (
     <div>

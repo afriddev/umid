@@ -5,7 +5,7 @@ import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 
 function AppNavbar() {
   return (
-    <div className=" text-background  w-full h-full      pl-6 flex justify-between items-center">
+    <div className=" text-background  w-full h-full  pl-6 flex justify-between items-center">
       <div className="flex items-center gap-10  ">
         <div className="cursor-pointer hover:bg-background/5 text-background-700  w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center">
           <HiOutlineMenu className="h-4 w-4" />

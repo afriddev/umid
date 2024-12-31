@@ -1,5 +1,5 @@
 import { Input } from "@nextui-org/input";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import GetIcon from "../appcomponents/GetIcon";
 
 interface InputInterface {
