@@ -9,6 +9,7 @@ interface MainLayoutInterface {
   children: ReactNode;
 }
 
+
 function MainLayout({ children }: MainLayoutInterface) {
   const { openSidebar } = useAppContext();
   const navigate = useNavigate();

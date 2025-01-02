@@ -14,7 +14,7 @@ function AppNavbar() {
   }
 
   return (
-    <div className=" text-background  w-full h-full      pl-6 flex justify-between items-center">
+    <div className=" text-background  w-full h-full  pl-6 flex justify-between items-center">
       <div className="flex items-center gap-10  ">
         <div
           onClick={handleMenuClick}
