@@ -28,7 +28,7 @@ function AppSidebar() {
     key: string,
     title: string,
     desc: string | null,
-    path: string | null,
+    path: string | null,  
     parentKey?: string | null
   ) {
     dispatch({
@@ -85,7 +85,7 @@ function AppSidebar() {
                             >
                               <AccordionItem
                                 startContent={<GetIcon icon={route?.icon} />}
-                                className=" flex flex-col   h-fit -mt-4 -mb-4   w-full"
+                                className=" flex flex-col h-fit -mt-4 -mb-4 w-full"
                                 indicator={getIndicatorIcons}
                                 key={route?.key}
                                 title={route?.title}

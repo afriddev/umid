@@ -8,7 +8,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiBell } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { HiOutlineMenu } from "react-icons/hi";
-
+import { IoIosArrowDown } from "react-icons/io";
+import { IoChevronUpOutline } from "react-icons/io5";
 
 interface GetIconInterface {
   icon: string;
@@ -42,14 +43,18 @@ function GetIcon({ icon, className }: GetIconInterface) {
 
       case "bell":
         return <FiBell className={`  w-4 h-4 ${className} `} />;
-        
+
       case "x":
         return <IoMdClose className={`  w-4 h-4 ${className} `} />;
-        
+
       case "menu":
         return <HiOutlineMenu className={`  w-4 h-4 ${className} `} />;
 
+      case "down":
+        return <IoIosArrowDown className={`  w-4 h-4 ${className} `} />;
 
+      case "up":
+        return <IoChevronUpOutline className={`  w-4 h-4 ${className} `} />;
     }
   }
 

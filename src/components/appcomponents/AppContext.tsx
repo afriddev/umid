@@ -66,6 +66,7 @@ function reducer(state: contextType, action: dispatchDataType) {
       throw new Error("Action unkonwn");
   }
 }
+
 export default function AppContext({ children }: { children: ReactNode }) {
   const [
     { defaultTheme, selectedMenu, openSidebar, navigatePathNames },

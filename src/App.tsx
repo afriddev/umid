@@ -4,20 +4,16 @@ import { useEffect } from "react";
 import { useAppContext } from "./components/appcomponents/AppContext";
 
 function App() {
-  const { dispatch, navigatePathNames } = useAppContext();
+  const { dispatch } = useAppContext();
 
   const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch({
       type: "addPathName",
-      payload: pathname,
+      payload: pathname,  
     });
   }, [pathname]);
-
-  useEffect(() => {
-    console.log(navigatePathNames);
-  }, [navigatePathNames]);
 
   return (
     <Routes>
