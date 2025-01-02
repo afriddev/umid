@@ -1,6 +1,7 @@
 import { Input } from "@nextui-org/input";
 import { ReactNode, useState } from "react";
 import GetIcon from "../appcomponents/GetIcon";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 interface InputInterface {
   label?: string;
@@ -22,6 +23,7 @@ interface InputInterface {
   isClearable?: boolean;
   inputClassName?: string;
   labelClassName?: string;
+  onchange?: (e: any) => void;
 }
 
 function NextInput({
@@ -44,14 +46,19 @@ function NextInput({
   isClearable = false,
   inputClassName,
   labelClassName,
+
+  onchange,
 }: InputInterface) {
   const [clicked, setInputClicked] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState(false);
 
+  const isPassword = type === "password";
   function getIcon(): ReactNode {
     if (icon) {
       return <GetIcon icon={icon} />;
     }
   }
+
 
   return (
     <div
@@ -76,13 +83,14 @@ function NextInput({
         variant={variant}
         name={name}
         label={label}
-        type={type}
+        type={isPassword && !showPassword ? "password" : "text"}
         placeholder={clicked ? placeholder : ""}
         isRequired={isRequired}
         pattern={pattern}
         minLength={minLength}
         maxLength={maxLength}
         isDisabled={isDisabled}
+        onChange={onchange}
         labelPlacement={labelPlacement}
         isClearable={isClearable}
         className={`   h-11  ${className} `}
@@ -90,6 +98,21 @@ function NextInput({
           input: ` ${icon && "pl-4"} ${inputClassName} text-xs`,
           label: ` ${icon && "pl-4"} ${labelClassName} `,
         }}
+        endContent={
+          isPassword ? (
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="text-gray-600"
+            >
+              {showPassword ? (
+                <AiFillEyeInvisible size={20} />
+              ) : (
+                <AiFillEye size={20} />
+              )}
+            </button>
+          ) : null
+        }
       />
     </div>
   );
