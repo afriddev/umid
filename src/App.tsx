@@ -1,10 +1,28 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
+import { useEffect } from "react";
+import { useAppContext } from "./components/appcomponents/AppContext";
 
 function App() {
+  const { dispatch, navigatePathNames } = useAppContext();
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    dispatch({
+      type: "addPathName",
+      payload: pathname,
+    });
+  }, [pathname]);
+
+  useEffect(() => {
+    console.log(navigatePathNames);
+  }, [navigatePathNames]);
+
   return (
     <Routes>
       <Route element={<Home />} path="/" />
+      <Route element={<Home />} path="/dashboard" />
     </Routes>
   );
 }

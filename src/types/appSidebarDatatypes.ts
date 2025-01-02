@@ -5,6 +5,7 @@ export type routeType = {
   parentKey: string | null;
   subPages: null | routeType[];
   icon: string;
+  path: string |null;
 };
 
 export type menuRouteType = {

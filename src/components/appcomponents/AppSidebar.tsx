@@ -7,9 +7,11 @@ import GetIcon from "./GetIcon";
 
 import menuRoutes from "./menu.json";
 import { menuRouteType, routeType } from "@/types/appSidebarDatatypes";
+import { useNavigate } from "react-router-dom";
 
 function AppSidebar() {
   const { selectedMenu, dispatch } = useAppContext();
+  const navigate = useNavigate();
 
   const accordionTitleClassName =
     " p-0  text-xs text-nowrap text-primary-foreground";
@@ -25,9 +27,9 @@ function AppSidebar() {
   function handleMenuItemClick(
     key: string,
     title: string,
-    desc: string,
-    path: string,
-    parentKey?: string
+    desc: string | null,
+    path: string | null,
+    parentKey?: string | null
   ) {
     dispatch({
       type: "setSelectedMenu",
@@ -36,9 +38,10 @@ function AppSidebar() {
         title,
         desc,
         parentKey,
+        path,
       },
     });
-    // router.push(`/${path}`);
+    navigate(`/${path}`);
   }
 
   return (
@@ -57,6 +60,15 @@ function AppSidebar() {
                     <div key={index}>
                       {!route?.subPages && (
                         <div
+                          onClick={() => {
+                            handleMenuItemClick(
+                              route.key,
+                              route?.title,
+                              route?.desc,
+                              route?.path,
+                              route?.parentKey
+                            );
+                          }}
                           className={`cursor-pointer flex items-center gap-3`}
                         >
                           <GetIcon icon={route?.icon} />
@@ -72,7 +84,7 @@ function AppSidebar() {
                               className="group w-full p-0 flex items-center "
                             >
                               <AccordionItem
-                              startContent={<GetIcon icon={route?.icon} />}
+                                startContent={<GetIcon icon={route?.icon} />}
                                 className=" flex flex-col   h-fit -mt-4 -mb-4   w-full"
                                 indicator={getIndicatorIcons}
                                 key={route?.key}
@@ -100,53 +112,6 @@ function AppSidebar() {
             </div>
           );
         })}
-
-        {/* <li
-          onClick={() => {
-            handleMenuItemClick("1", DASHBOARD, DASHBOARD_DESC, "dashboard");
-          }}
-          className={` cursor-pointer  flex items-center gap-3  ${selectedMenu?.key === "1" && !selectedMenu?.parentKey ? "text-sidebar-foreground" : "text-primary-foreground/60"} hover:text-primary-foreground `}
-        >
-          <GetIcon icon="dashboard" />
-          {DASHBOARD}
-        </li>
-
-        <Accordion
-          onSelectionChange={(keys) => {
-            console.log(keys);
-          }}
-          defaultExpandedKeys={[2]}
-          className="-ml-2"
-        >
-          <AccordionItem
-            indicator={getIndicatorIcons}
-            key={"2"}
-            title={ORGANISATION_MANAGEMENT}
-            startContent={<GetIcon icon="org" />}
-            className="text-primary-foreground"
-            classNames={{
-              title: accordionTitleClassName,
-            }}
-          >
-            <div className="ml-10">
-              <li
-                onClick={() => {
-                  handleMenuItemClick(
-                    "1",
-                    MANAGE_ORGANISATION,
-                    MANAGE_ORGANISATION_DESC,
-                    "manageorganisation",
-                    "2"
-                  );
-                }}
-                className={` flex items-center gap-3 cursor-pointer  ${selectedMenu?.key === "1" && selectedMenu?.parentKey === "2" ? "text-primary-foreground" : "text-primary-foreground/60"} hover:text-primary-foreground  `}
-              >
-                <GetIcon icon="manageOrg" />
-                {MANAGE_ORGANISATION}
-              </li>
-            </div>
-          </AccordionItem>
-        </Accordion> */}
       </div>
     </div>
   );

@@ -2,7 +2,6 @@
   "routes": [
     {
       "heading": "Main",
-
       "routes": [
         {
           "title": "Dashboard",
@@ -10,7 +9,8 @@
           "key": "1",
           "parentKey": null,
           "subPages": null,
-          "icon": "dashboard"
+          "icon": "dashboard",
+          "path": "dashboard"
         }
       ]
     },
@@ -24,7 +24,8 @@
           "key": "1",
           "parentKey": null,
           "subPages": null,
-          "icon": "dashboard"
+          "icon": "dashboard",
+          "path": "a"
         },
         {
           "title": "Organisation Management",
@@ -32,6 +33,7 @@
           "key": "2",
           "parentKey": null,
           "icon": "org",
+          "path": null,
 
           "subPages": [
             {
@@ -40,7 +42,8 @@
               "key": "1",
               "parentKey": "2",
               "subPages": null,
-              "icon": "manageOrg"
+              "icon": "manageOrg",
+              "path": "b"
             },
             {
               "title": "Organisation Report ",
@@ -48,38 +51,20 @@
               "key": "2",
               "parentKey": "2",
               "subPages": null,
-              "icon": "reports"
+              "icon": "reports",
+              "path": "b"
             }
           ]
         },
-        
         {
-          "title": "Organisation Management",
-          "desc": null,
-          "key": "2",
+          "title": "Dashboard",
+          "desc": "View And analyse users,organisation and more...",
+          "key": "1",
           "parentKey": null,
-          "icon": "org",
-
-          "subPages": [
-            {
-              "title": "Manage Organisation",
-              "desc": "Manage Organisation desc helo world",
-              "key": "1",
-              "parentKey": "2",
-              "subPages": null,
-              "icon": "manageOrg"
-            },
-            {
-              "title": "Organisation Report ",
-              "desc": "Manage Organisation reports and more",
-              "key": "2",
-              "parentKey": "2",
-              "subPages": null,
-              "icon": "reports"
-            }
-          ]
+          "subPages": null,
+          "icon": "dashboard",
+          "path": "b"
         }
-
       ]
     }
   ]

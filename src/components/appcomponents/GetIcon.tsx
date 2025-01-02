@@ -6,6 +6,9 @@ import { HiOutlineDocumentReport } from "react-icons/hi";
 import { RiSearch2Line } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FiBell } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
+import { HiOutlineMenu } from "react-icons/hi";
+
 
 interface GetIconInterface {
   icon: string;
@@ -39,6 +42,14 @@ function GetIcon({ icon, className }: GetIconInterface) {
 
       case "bell":
         return <FiBell className={`  w-4 h-4 ${className} `} />;
+        
+      case "x":
+        return <IoMdClose className={`  w-4 h-4 ${className} `} />;
+        
+      case "menu":
+        return <HiOutlineMenu className={`  w-4 h-4 ${className} `} />;
+
+
     }
   }
 

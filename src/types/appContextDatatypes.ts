@@ -13,5 +13,8 @@ export type contextType = {
     title: string;
     desc: string;
     parentKey: string | null;
+    path:string 
   };
+  openSidebar:boolean;
+  navigatePathNames:string [] 
 };

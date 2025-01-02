@@ -10,10 +10,26 @@ const initState: contextType = {
     parentKey: null,
     desc: "View And analyse users,organisation and more...",
     title: "Dashboard",
+    path: "/",
   },
+  openSidebar: false,
+  navigatePathNames: [],
 };
 
 const contextProvider = createContext(initState);
+
+function handleAddPathName(state: contextType, pathName: string): string[] {
+  let temp = state?.navigatePathNames;
+  if (temp.includes(pathName)) {
+    const findedIndex = temp.indexOf(pathName);
+
+    temp = temp.slice(0, findedIndex + 1);
+  } else {
+    temp.push(pathName);
+  }
+
+  return temp;
+}
 
 function reducer(state: contextType, action: dispatchDataType) {
   switch (action?.type) {
@@ -31,7 +47,19 @@ function reducer(state: contextType, action: dispatchDataType) {
           parentKey: action?.payload?.parentKey ?? null,
           desc: action?.payload?.desc,
           title: action?.payload?.title,
+          path: action?.payload?.path,
         },
+      };
+
+    case "setOpenSidebar":
+      return {
+        ...state,
+        openSidebar: !state?.openSidebar,
+      };
+    case "addPathName":
+      return {
+        ...state,
+        navigatePathNames: handleAddPathName(state, action?.payload),
       };
 
     default:
@@ -39,16 +67,18 @@ function reducer(state: contextType, action: dispatchDataType) {
   }
 }
 export default function AppContext({ children }: { children: ReactNode }) {
-  const [{ defaultTheme, selectedMenu }, dispatch] = useReducer(
-    reducer,
-    initState
-  );
+  const [
+    { defaultTheme, selectedMenu, openSidebar, navigatePathNames },
+    dispatch,
+  ] = useReducer(reducer, initState);
 
   return (
     <contextProvider.Provider
       value={{
         dispatch,
         defaultTheme,
+        openSidebar,
+        navigatePathNames,
 
         selectedMenu,
       }}
