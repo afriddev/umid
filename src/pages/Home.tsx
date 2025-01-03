@@ -1,6 +1,8 @@
 import GetIcon from "@/components/appcomponents/GetIcon";
 import NextButton from "@/components/ui/NextButton";
 import NextInput from "@/components/ui/NextInput";
+import NextTable from "@/components/ui/NextTable";
+import { columnDef } from "@/types/appTableDatatyes";
 import { Form } from "@nextui-org/react";
 
 function Home() {
@@ -8,9 +10,71 @@ function Home() {
     e.preventDefault();
     console.log("Form Data:", e.target.email.value, e.target.password.value);
   };
+
+  type studentType = {
+    id: string;
+    name: string;
+    attended: boolean;
+    mobileNumber: number;
+    class: string;
+    section: string;
+    classTeacher: string;
+  };
+
+  const columns: columnDef<studentType>[] = [
+    {
+      accessoryKey: "id",
+      header:"Roll No "
+    },
+    
+    {
+      accessoryKey: "name",
+      header:"Full Name"
+    },
+    {
+      accessoryKey: "mobileNumber",
+      header:"Parent Mobile No"
+    },
+    {
+      accessoryKey: "class",
+      header:"Class"
+    },
+    {
+      accessoryKey: "section",
+      header:"Section"
+    },
+    
+    {
+      accessoryKey: "classTeacher",
+      header:"Class teacher"
+    },
+
+    {
+      accessoryKey: "attended",
+      header:"Attended"
+    }
+
+
+  ];
+
   return (
     <div>
-      <div className="p-10 ">
+      <NextTable
+        columns={columns}
+        tableData={[  
+          {
+            id: "id1",
+            name: "Shaik Afrid",
+            attended: false,
+            mobileNumber: 9390558027,
+            class:"10th Class",
+            section:"A Sec",
+            classTeacher:"Shaik Afrid"
+          },
+        ]}
+      />
+
+      {/* <div className="p-10 ">
         <Form
           onSubmit={handleSubmit}
           validationBehavior="native"
@@ -50,7 +114,7 @@ function Home() {
             Submit
           </NextButton>
         </Form>
-      </div>
+      </div> */}
     </div>
   );
 }
