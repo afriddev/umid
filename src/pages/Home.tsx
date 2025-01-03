@@ -24,57 +24,55 @@ function Home() {
   const columns: columnDef<studentType>[] = [
     {
       accessoryKey: "id",
-      header:"Roll No "
+      header: "Roll No ",
     },
-    
+
     {
       accessoryKey: "name",
-      header:"Full Name"
+      header: "Full Name",
     },
     {
       accessoryKey: "mobileNumber",
-      header:"Parent Mobile No"
+      header: "Parent Mobile No",
     },
     {
       accessoryKey: "class",
-      header:"Class"
+      header: "Class",
     },
     {
       accessoryKey: "section",
-      header:"Section"
+      header: "Section",
     },
-    
+
     {
       accessoryKey: "classTeacher",
-      header:"Class teacher"
+      header: "Class teacher",
     },
 
     {
       accessoryKey: "attended",
-      header:"Attended"
-    }
-
-
+      header: "Attended",
+    },
   ];
 
   return (
     <div>
       <NextTable
         columns={columns}
-        tableData={[  
+        tableData={[
           {
             id: "id1",
             name: "Shaik Afrid",
             attended: false,
             mobileNumber: 9390558027,
-            class:"10th Class",
-            section:"A Sec",
-            classTeacher:"Shaik Afrid"
+            class: "10th Class",
+            section: "A Sec",
+            classTeacher: "Shaik Afrid",
           },
         ]}
       />
 
-      {/* <div className="p-10 ">
+      <div className="p-10 ">
         <Form
           onSubmit={handleSubmit}
           validationBehavior="native"
@@ -106,15 +104,12 @@ function Home() {
               startIcon={true}
             />
           </div>
-          <div>
-            <GetIcon icon="org" />
-          </div>
 
           <NextButton type="submit" color="primary" variant="solid">
             Submit
           </NextButton>
         </Form>
-      </div> */}
+      </div>
     </div>
   );
 }

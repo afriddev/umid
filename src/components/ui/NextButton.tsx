@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/button";
+import { Button } from "@nextui-org/react";
 import { ReactNode } from "react";
 import { FaUser } from "react-icons/fa";
 
