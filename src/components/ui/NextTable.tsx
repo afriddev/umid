@@ -44,7 +44,14 @@ function NextTable({
   }
 
   return (
-    <Table>
+    <Table
+      classNames={{
+        table: "",
+        wrapper: "rounded-md ",
+        thead: " text-black  drop-shadow-lg",
+        th: "text-black font-semibold text-md ",
+      }}
+    >
       <TableHeader>
         {columns.map((column, index) => (
           <TableColumn key={index}>
@@ -54,7 +61,7 @@ function NextTable({
           </TableColumn>
         ))}
       </TableHeader>
-      <TableBody isLoading={isLoading} loadingContent={"Loading ..."} >
+      <TableBody isLoading={isLoading} loadingContent={"Loading ..."}>
         {tableData?.map((item: any, index: number) => (
           <TableRow key={index}>
             {columns.map((column, index2) => {
