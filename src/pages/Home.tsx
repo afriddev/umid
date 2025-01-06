@@ -1,14 +1,25 @@
-import GetIcon from "@/components/appcomponents/GetIcon";
+// import GetIcon from "@/components/appcomponents/GetIcon";
+import Alert from "@/components/ui/Alert";
 import NextButton from "@/components/ui/NextButton";
 import NextInput from "@/components/ui/NextInput";
 import NextTable from "@/components/ui/NextTable";
 import { columnDef } from "@/types/appTableDatatyes";
 import { Form } from "@nextui-org/react";
 
+import { useState } from "react";
+
 function Home() {
+  const [alert, setAlert] = useState<{
+    type: "success" | "error" | "info" | "warning";
+    message: string;
+  } | null>(null);
+  const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log("Form Data:", e.target.email.value, e.target.password.value);
+    setTimeout(() => {
+      setIsAlertVisible(true);
+    }, 2000);
   };
 
   type studentType = {
@@ -78,6 +89,9 @@ function Home() {
           validationBehavior="native"
           className="pt-10 flex flex-col gap-6  "
         >
+         
+          {isAlertVisible && <Alert type="success"  message={"submit form sucessful"} 
+           onClose={() =>setIsAlertVisible(false)}/>}
           <NextInput
             isRequired={true}
             label="Email Id"
