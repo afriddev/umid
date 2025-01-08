@@ -8,41 +8,22 @@ import {
   TableRow,
 } from "@nextui-org/react";
 import { ReactNode, useState } from "react";
-import GetIcon from "../appcomponents/GetIcon";
 import DataTableHeader from "../appcomponents/DataTableToolBar";
-import { Accordion, AccordionItem } from "@nextui-org/react";
 
 interface NextTableInterface {
   columns: nextTableColumnType[];
   tableData: any;
   isLoading?: boolean;
+  tableToolbar: ReactNode;
 }
 
 function NextTable({
   columns,
   tableData,
   isLoading = false,
+  tableToolbar,
 }: NextTableInterface) {
-  const [page, setPage] = useState<number>(0);
-
-  const [openAdditonalData, setOpenAdditonalData] = useState<
-    | {
-        value: boolean;
-        index: number;
-      }
-    | undefined
-  >(undefined);
-
-  function handleOpenAdditionalData(index: number) {
-    if (index !== openAdditonalData?.index) {
-      setOpenAdditonalData({
-        value: true,
-        index,
-      });
-    } else {
-      setOpenAdditonalData(undefined);
-    }
-  }
+  const [page, setPage] = useState<number>(1);
 
   function renderCell(key: string, data: any): ReactNode {
     const temp = columns?.filter((item) => item?.accessoryKey === key);
@@ -69,15 +50,19 @@ function NextTable({
 
   return (
     <Table
-      className="border border-foreground/20 px-5 py-3 rounded-md"
+      isHeaderSticky
+      className="border border-foreground/20 px-5 py-2 rounded-md"
       removeWrapper
       topContent={
-        <DataTableHeader page={page} setPage={setPage} totalPages={10} />
+        <DataTableHeader page={page} setPage={setPage} totalPages={10}>
+          {tableToolbar}
+        </DataTableHeader>
       }
       classNames={{
         wrapper: "rounded-md ",
         thead: " text-black  drop-shadow-lg",
         th: "text-black font-semibold text-md ",
+        base: "max-h-[50vh]  overflow-auto",
       }}
     >
       <TableHeader>
@@ -91,41 +76,11 @@ function NextTable({
       </TableHeader>
       <TableBody isLoading={isLoading} loadingContent={"Loading ..."}>
         {tableData?.map((item: any, index: number) => (
-          <TableRow key={index}>
+          <TableRow key={index} className="relative h-[10vh] ">
             {columns.map((column, index2) => {
               return (
                 <TableCell key={index2}>
-                  <div className="flex flex-col *:gap-1">
-                    <div className="flex gap-1 items-center">
-                      <div
-                        onClick={() => {
-                          handleOpenAdditionalData(index);
-                        }}
-                        className="flex items-center   gap-2 cursor-pointer"
-                      >
-                        {index2 === 0 && (
-                          <div className="">
-                            <GetIcon
-                              icon={`${openAdditonalData?.index === index && openAdditonalData?.value ? "triangleUp" : "triangleRight"}`}
-                            />
-                          </div>
-                        )}
-                      </div>
-                      {renderCell(column?.accessoryKey, item)}
-                    </div>
-                    <div
-                      className={`overflow-hidden transition-all duration-500 ease-in-out bg-gray-50 ${
-                        openAdditonalData?.value
-                          ? "max-h-screen opacity-100"
-                          : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <p className="p-4">
-                        This is the content that will show and hide with
-                        animation.
-                      </p>
-                    </div>
-                  </div>
+                  {renderCell(column?.accessoryKey, item)}
                 </TableCell>
               );
             })}

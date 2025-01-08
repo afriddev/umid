@@ -18,7 +18,7 @@ function AppNavbar() {
       <div className="flex items-center gap-10  ">
         <div
           onClick={handleMenuClick}
-          className="z-[999] cursor-pointer hover:bg-background/5 text-background-700  w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center"
+          className="z-[990] cursor-pointer hover:bg-background/5 text-background-700  w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center"
         >
           {<GetIcon icon={openSidebar ? "x" : "menu"} />}
         </div>
