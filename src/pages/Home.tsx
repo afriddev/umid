@@ -9,10 +9,6 @@ import { Form } from "@nextui-org/react";
 import { useState } from "react";
 
 function Home() {
-  const [alert, setAlert] = useState<{
-    type: "success" | "error" | "info" | "warning";
-    message: string;
-  } | null>(null);
   const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
   const handleSubmit = (e: any) => {
     e.preventDefault();
