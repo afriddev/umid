@@ -28,7 +28,7 @@ function MainLayout({ children }: MainLayoutInterface) {
                 }}
                 className="h-[7vh] flex p-2 cursor-pointer "
               >
-                <img alt="logo" src="umid-logo.png" className="h-full " />
+                <img alt="logo" src="umid.png" className="h-full " />
               </div>
             </div>
             <div className="h-full w-full ">
