@@ -9,6 +9,7 @@ interface AlertProps {
   message: string;
   icon?: ReactNode;
   className?: string;
+  onClose: () => void;
 }
 
 const alertStyles: Record<AlertType, string> = {
@@ -18,7 +19,8 @@ const alertStyles: Record<AlertType, string> = {
   info: 'bg-blue-100 text-blue-700 border-blue-300',
 };
 
-const Alert: FC<AlertProps> = ({ type = 'info', message, icon, className }) => {
+const Alert: FC<AlertProps> = ({ type = 'info', message, icon, className , onClose }) => {
+  
   return (
     <Card
       className={clsx(
@@ -31,6 +33,11 @@ const Alert: FC<AlertProps> = ({ type = 'info', message, icon, className }) => {
         {icon && <div className="text-lg">{icon}</div>}
         <span className="font-medium">{message}</span>
       </div>
+      <button onClick={onClose} className="ml-2">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
     </Card>
   );
 };
