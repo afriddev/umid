@@ -10,6 +10,8 @@ import { IoMdClose } from "react-icons/io";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoChevronUpOutline } from "react-icons/io5";
+import { FaCaretRight } from "react-icons/fa6";
+import { GoTriangleUp } from "react-icons/go";
 
 interface GetIconInterface {
   icon: string;
@@ -55,6 +57,12 @@ function GetIcon({ icon, className }: GetIconInterface) {
 
       case "up":
         return <IoChevronUpOutline className={`  w-4 h-4 ${className} `} />;
+
+      case "triangleUp":
+        return <GoTriangleUp className={`  w-5 h-5 ${className} `} />;
+
+      case "triangleRight":
+        return <FaCaretRight className={`  w-4 h-4 ${className} `} />;
     }
   }
 

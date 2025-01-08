@@ -93,10 +93,11 @@ function NextInput({
         onChange={onchange}
         labelPlacement={labelPlacement}
         isClearable={isClearable}
-        className={`   h-11  ${className} `}
+        size="md"
+        className={` ${className} `}
         classNames={{
           input: ` ${icon && "pl-4"} ${inputClassName} text-xs`,
-          label: ` ${icon && "pl-4"} ${labelClassName} `,
+          label: ` ${icon && "pl-4"} ${labelClassName}  text-nowrap`,
         }}
         endContent={
           isPassword ? (

@@ -78,6 +78,16 @@ function Home() {
             mobileNumber: 9390558027,
             class: "10th Class",
             section: "A Sec",
+            classTeacher: "Shaik Afrid",  
+          },
+
+          {
+            id: "id1",
+            name: "Shaik Afrid",
+            attended: false,
+            mobileNumber: 9390558027,
+            class: "10th Class",
+            section: "A Sec",
             classTeacher: "Shaik Afrid",
           },
         ]}
@@ -89,9 +99,13 @@ function Home() {
           validationBehavior="native"
           className="pt-10 flex flex-col gap-6  "
         >
-         
-          {isAlertVisible && <Alert type="success"  message={"submit form sucessful"} 
-           onClose={() =>setIsAlertVisible(false)}/>}
+          {isAlertVisible && (
+            <Alert
+              type="success"
+              message={"submit form sucessful"}
+              onClose={() => setIsAlertVisible(false)}
+            />
+          )}
           <NextInput
             isRequired={true}
             label="Email Id"
