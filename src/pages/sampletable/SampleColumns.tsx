@@ -1,6 +1,6 @@
 import { columnDef } from "@/types/appTableDatatyes";
 
-interface studentType {
+interface organisationType {
   aUnitName: string;
   aParentUnitId: string;
   aLevel: boolean;
@@ -10,7 +10,7 @@ interface studentType {
   aUpdatedAt: string;
 }
 
-const sampleColumns: columnDef<studentType>[] = [
+const sampleColumns: columnDef<organisationType>[] = [
   {
     accessoryKey: "id",
     header: "Roll No ",

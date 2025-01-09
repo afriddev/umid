@@ -29,9 +29,9 @@ function SampleMain() {
       </div>
       <SampleTable />
 
-      {(openDialog || true) && (
-        <AppDialog closeMe={closeDialog}  right={true }>
-         <CreateOrganisation  />
+      {openDialog  && (
+        <AppDialog closeMe={closeDialog} right={true}>
+          <CreateOrganisation />
         </AppDialog>
       )}
     </div>
