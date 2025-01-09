@@ -1,4 +1,4 @@
-import { Select, SelectItem } from "@nextui-org/react";
+import { Select, SelectItem } from "@nextui-org/react"; 
 import { ReactNode } from "react";
 
 interface NextSelectInterface {
@@ -25,4 +25,4 @@ function NextSelectItem({ children }: NextSelectItemInterface) {
   return <SelectItem>{children}</SelectItem>;
 }
 
-export { NextSelect, NextSelectItem };
+export { NextSelect, NextSelectItem };  

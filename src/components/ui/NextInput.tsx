@@ -59,7 +59,6 @@ function NextInput({
     }
   }
 
-
   return (
     <div
       onClick={() => {
@@ -68,23 +67,24 @@ function NextInput({
       onBlur={() => {
         setInputClicked(false);
       }}
-      className="relative flex items-center"
+      className="relative flex items-center w-full "
     >
       {icon && (
         <div
-          className={`absolute  ${startIcon ? "pl-2 left-0" : endIcon ? "pr-2 right-0" : ""} `}
+          className={`absolute top-5  ${startIcon ? "pl-2 left-0" : endIcon ? "pr-2 right-0" : ""} `}
         >
           {getIcon()}
         </div>
       )}
 
       <Input
+      color="primary"
         errorMessage={errorMessage}
         variant={variant}
         name={name}
         label={label}
         type={isPassword && !showPassword ? "password" : "text"}
-        placeholder={clicked ? placeholder : ""}
+        // placeholder={clicked ? placeholder : ""}
         isRequired={isRequired}
         pattern={pattern}
         minLength={minLength}
@@ -96,9 +96,10 @@ function NextInput({
         size="md"
         className={` ${className} `}
         classNames={{
-          input: ` ${icon && "pl-4"} ${inputClassName} text-xs`,
+          input: ` ${icon && "pl-4"} ${inputClassName} text-sm`,
           label: ` ${icon && "pl-4"} ${labelClassName}  text-nowrap`,
         }}
+        fullWidth={true}
         endContent={
           isPassword ? (
             <button

@@ -2,9 +2,14 @@ import NextButton from "@/components/ui/NextButton";
 import SampleTable from "./Sampletable";
 import { useState } from "react";
 import AppDialog from "@/components/ui/AppDialog";
+import CreateOrganisation from "./CreateOrganisation";
 
 function SampleMain() {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
+
+  function closeDialog() {
+    setOpenDialog(false);
+  }
 
   return (
     <div className="flex flex-col gap-2">
@@ -24,12 +29,11 @@ function SampleMain() {
       </div>
       <SampleTable />
 
-
-      {
-        openDialog || true &&  <AppDialog >
-             Hello wolrd
+      {(openDialog || true) && (
+        <AppDialog closeMe={closeDialog}  right={true }>
+         <CreateOrganisation  />
         </AppDialog>
-      }
+      )}
     </div>
   );
 }
