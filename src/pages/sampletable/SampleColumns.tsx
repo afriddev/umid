@@ -24,7 +24,7 @@ const sampleColumns: columnDef<organisationType>[] = [
   },
   {
     accessoryKey: "aParentUnitId",
-    header: "Parent Umit id ",
+    header: "Parent Unit id ",
   },
   {
     accessoryKey: "aLevel",
