@@ -1,13 +1,13 @@
 import { columnDef } from "@/types/appTableDatatyes";
 
 interface studentType {
-  id: string;
-  name: string;
-  attended: boolean;
-  mobileNumber: number;
-  class: string;
-  section: string;
-  classTeacher: string;
+  aUnitName: string;
+  aParentUnitId: string;
+  aLevel: boolean;
+  aEndLevel: number;
+  aUserId: string;
+  aEntryDate: string;
+  aUpdatedAt: string;
 }
 
 const sampleColumns: columnDef<studentType>[] = [
