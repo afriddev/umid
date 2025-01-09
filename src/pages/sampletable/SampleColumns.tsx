@@ -11,37 +11,40 @@ interface organisationType {
 }
 
 const sampleColumns: columnDef<organisationType>[] = [
-  {
-    accessoryKey: "id",
-    header: "Roll No ",
-  },
+ 
 
   {
-    accessoryKey: "name",
+    accessoryKey: "aUnitName",
     header: "Full Name",
   },
+
   {
-    accessoryKey: "mobileNumber",
-    header: "Parent Mobile No",
+    accessoryKey: "aUserId",
+    header: "User Id",
   },
   {
-    accessoryKey: "class",
-    header: "Class",
+    accessoryKey: "aParentUnitId",
+    header: "Parent Umit id ",
   },
   {
-    accessoryKey: "section",
-    header: "Section",
+    accessoryKey: "aLevel",
+    header: "Level",
+  },
+  {
+    accessoryKey: "aEndLevel",
+    header: "End Level",
   },
 
   {
-    accessoryKey: "classTeacher",
-    header: "Class teacher",
+    accessoryKey: "aEntryDate",
+    header: "Entry Date",
+  },
+  {
+    accessoryKey: "aUpdatedAt",
+    header: "Updated At", 
   },
 
-  {
-    accessoryKey: "attended",
-    header: "Attended",
-  },
+  
 ];
 
 export default sampleColumns;

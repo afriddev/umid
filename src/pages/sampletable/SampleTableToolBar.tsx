@@ -7,7 +7,7 @@ function SampleTableToolBar() {
   return (
     <div className="flex items-center gap-3">
       <NextInput
-        label="Search by user Name or Email"
+        label="Search by user id  or unit id"
         placeholder="Enter user Name or Email"
         className="w-[15vw]"
         isClearable
