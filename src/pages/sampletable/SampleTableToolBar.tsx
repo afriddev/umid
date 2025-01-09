@@ -1,18 +1,20 @@
 
 import NextButton from "@/components/ui/NextButton";
 import NextInput from "@/components/ui/NextInput";
-import { Select, SelectItem } from "@nextui-org/react";
+// import { Select, SelectItem } from "@nextui-org/react";
 
 function SampleTableToolBar() {
+
+  
   return (
     <div className="flex items-center gap-3">
-      <NextInput
+      {/* <NextInput
         label="Search by user id  or unit id"
         placeholder="Enter user Name or Email"
         className="w-[15vw]"
         isClearable
-      />
-      <div>
+      /> */}
+      {/* <div>
         <Select
           size="sm"
           itemHeight={10}
@@ -21,9 +23,9 @@ function SampleTableToolBar() {
         >
           <SelectItem>Afrid</SelectItem>
         </Select>
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         <Select
           size="sm"
           itemHeight={10}
@@ -32,8 +34,8 @@ function SampleTableToolBar() {
         >
           <SelectItem>ADMIN</SelectItem>
         </Select>
-      </div>
-      <NextButton>Search</NextButton>
+      </div> */}
+      {/* <NextButton>Search</NextButton> */}
     </div>
   );
 }

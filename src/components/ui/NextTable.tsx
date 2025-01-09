@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 import { ReactNode, useState } from "react";
 import DataTableHeader from "../appcomponents/DataTableToolBar";
+import NextInput from "./NextInput";
 
 interface NextTableInterface {
   columns: nextTableColumnType[];
@@ -24,6 +25,21 @@ function NextTable({
   tableToolbar,
 }: NextTableInterface) {
   const [page, setPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  
+  function filterData(data: any[], query: string): any[] {
+    if (!query.trim()) {
+      return data;
+    }
+    const lowerCaseQuery = query.toLowerCase();
+    return data.filter((item: any) =>
+      Object.values(item).some((value) =>
+        value?.toString().toLowerCase().includes(lowerCaseQuery)
+      )
+    );
+  }
+
+  const filteredData = filterData(tableData, searchQuery);
 
   function renderCell(key: string, data: any): ReactNode {
     const temp = columns?.filter((item) => item?.accessoryKey === key);
@@ -50,13 +66,22 @@ function NextTable({
 
   return (
     <Table
-      isHeaderSticky
       className="border border-foreground/20 px-5 py-2 rounded-md"
       removeWrapper
       topContent={
-        <DataTableHeader page={page} setPage={setPage} totalPages={10}>
-          {tableToolbar}
-        </DataTableHeader>
+        <>
+          <div className="flex justify-between items-center">
+            <NextInput
+              label="Search by user id  or unit id"
+              placeholder="Enter user Name or Email"
+              className="w-[15vw]"
+              onchange={(e: any) => setSearchQuery(e.target.value)}
+            />
+            <DataTableHeader page={page} setPage={setPage} totalPages={10}>
+              {tableToolbar}
+            </DataTableHeader>
+          </div>
+        </>
       }
       classNames={{
         wrapper: "rounded-md ",
@@ -75,7 +100,7 @@ function NextTable({
         ))}
       </TableHeader>
       <TableBody isLoading={isLoading} loadingContent={"Loading ..."}>
-        {tableData?.map((item: any, index: number) => (
+        {filteredData?.map((item: any, index: number) => (
           <TableRow key={index} className="relative h-[10vh] ">
             {columns.map((column, index2) => {
               return (

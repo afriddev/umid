@@ -13,7 +13,9 @@ function CreateOrganisation() {
         onSubmit={(e) => {
           e.preventDefault();
           let data = Object.fromEntries(new FormData(e.currentTarget));
+          console.log(data);
         }}
+
       >
         <div className="flex flex-col gap-5 w-full">
           <NextInput
