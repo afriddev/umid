@@ -19,7 +19,7 @@ function MainLayout({ children }: MainLayoutInterface) {
       <div className="h-screen w-screen flex flex-col bg-background ">
         <div className="w-full h-full flex items-center">
           <div
-            className={`${openSidebar ? "flex flex-col " : "hidden"}  absolute w-fit z-[990] lg:relative  lg:flex lg:flex-col gap-4 h-full lg:w-[17vw] bg-sidebar text-sidebar-foreground  `}
+            className={`${openSidebar ? "flex flex-col " : "hidden"}  absolute w-fit z-[990] lg:relative  lg:flex lg:flex-col gap-4 h-full lg:w-[21vw] bg-sidebar text-sidebar-foreground  `}
           >
             <div className="h-[7vh] border-b  flex items-center bg-background justify-center border-sidebar-foreground/30">
               <div
