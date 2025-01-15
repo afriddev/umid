@@ -57,7 +57,7 @@ function NextTable({
                 .includes(searchFilter[index].value.toLowerCase().trim()) ||
               tableData[index1]?.aUserId
                 ?.toLowerCase()
-                .trim() 
+                .trim()
                 .includes(searchFilter[index].value.toLowerCase().trim())
             ) {
               temp.push(tableData[index1]);
@@ -113,6 +113,10 @@ function NextTable({
     );
   }
 
+  function generateRandomId(): string {
+    return Math.random().toString(36).substring(2, 12);
+  }
+
   return (
     <Table
       className="border border-foreground/20 px-5 py-2 rounded-md h-full"
@@ -155,11 +159,28 @@ function NextTable({
           </TableColumn>
         ))}
       </TableHeader>
-      <TableBody isLoading={isLoading} loadingContent={"Loading ..."}>
-        {filteredData
+
+      <TableBody
+        isLoading={isLoading}
+        loadingContent={"Loading ..."}
+        items={tableData}
+      >
+        {(item: any) => (
+          <TableRow key={generateRandomId()}>
+            {(columnKey) => {
+              return (
+                <TableCell>
+                  {renderCell(Object.keys(item)[columnKey as any], item)}
+                </TableCell>
+              );
+            }}
+          </TableRow>
+        )}
+
+        {/* {filteredData
           ?.slice((page - 1) * 5, page * 5)
           ?.map((item: any, index: number) => (
-            <TableRow key={index} className="relative h-[10vh] ">
+            <TableRow key={index} className="relative h-[10vh] "> 
               {columns.map((column, index2) => {
                 return (
                   <TableCell key={index2}>
@@ -168,7 +189,7 @@ function NextTable({
                 );
               })}
             </TableRow>
-          ))}
+          ))} */}
       </TableBody>
     </Table>
   );

@@ -77,8 +77,7 @@ function NextInput({
       )}
 
       <Input
-      aria-label="hhdasdas"
-      aria-aria-labelledby="hhfgfrg"
+      aria-labelledby={label ?? placeholder}
         color="primary"
         errorMessage={errorMessage}
         variant={variant}
