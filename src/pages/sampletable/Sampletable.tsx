@@ -5,7 +5,7 @@ import SampleTableToolBar from "./SampleTableToolBar";
 
 function SampleTable() {
   return (
-    <div>
+    <div className="flex h-full">
       <NextTable
         columns={sampleColumns}
         tableData={studentsData}

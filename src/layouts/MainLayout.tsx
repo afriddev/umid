@@ -42,9 +42,9 @@ function MainLayout({ children }: MainLayoutInterface) {
                 <AppNavbar />
               </div>
             </div>
-            <div className="w-full   h-full p-3">
+            <div className="w-full   h-full flex flex-col p-3">
               <AppMenu />
-              <div className=" ml-2 mt-2 p-1 text-foreground">{children}</div>
+              <div className=" ml-2 mt-2 p-1 text-foreground h-full  flex ">{children}</div>
             </div>
           </div>
         </div>

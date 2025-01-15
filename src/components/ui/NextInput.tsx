@@ -46,7 +46,6 @@ function NextInput({
   isClearable = false,
   inputClassName,
   labelClassName,
-
   onchange,
 }: InputInterface) {
   const [clicked, setInputClicked] = useState<boolean>(false);
@@ -78,7 +77,9 @@ function NextInput({
       )}
 
       <Input
-      color="primary"
+      aria-label="hhdasdas"
+      aria-aria-labelledby="hhfgfrg"
+        color="primary"
         errorMessage={errorMessage}
         variant={variant}
         name={name}
@@ -93,6 +94,16 @@ function NextInput({
         onChange={onchange}
         labelPlacement={labelPlacement}
         isClearable={isClearable}
+        onClear={() => {
+          onchange &&
+            onchange({
+              e: {
+                target: {
+                  value: "",
+                },
+              },
+            });
+        }}
         size="md"
         className={` ${className} `}
         classNames={{

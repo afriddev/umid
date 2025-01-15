@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import DataTableHeader from "../appcomponents/DataTableToolBar";
 import NextInput from "./NextInput";
 
@@ -16,6 +16,7 @@ interface NextTableInterface {
   tableData: any;
   isLoading?: boolean;
   tableToolbar: ReactNode;
+  rows?: number;
 }
 
 function NextTable({
@@ -23,23 +24,71 @@ function NextTable({
   tableData,
   isLoading = false,
   tableToolbar,
+  rows = 5,
 }: NextTableInterface) {
   const [page, setPage] = useState<number>(1);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  
-  function filterData(data: any[], query: string): any[] {
-    if (!query.trim()) {
-      return data;
+  const [filteredData, setFilteredData] = useState<any>(undefined);
+
+  const [searchFilter, setSearchFilters] = useState<
+    { key: string; value: string }[]
+  >([]);
+
+  useEffect(() => {
+    if (!filteredData) {
+      setFilteredData(tableData);
     }
-    const lowerCaseQuery = query.toLowerCase();
-    return data.filter((item: any) =>
-      Object.values(item).some((value) =>
-        value?.toString().toLowerCase().includes(lowerCaseQuery)
-      )
-    );
+    handleSearchFilters();
+  }, [searchFilter]);
+
+  function handleSearchFilters() {
+    if (searchFilter?.length > 0) {
+      for (let index = 0; index < searchFilter?.length; index++) {
+        if (searchFilter[index].key === "search" && searchFilter[index].value) {
+          const temp = [];
+          for (let index1 = 0; index1 < tableData?.length; index1++) {
+            if (
+              tableData[index1]?.aUnitName
+                ?.toLowerCase()
+                .trim()
+                .includes(searchFilter[index].value.toLowerCase().trim()) ||
+              tableData[index1]?.aParentUnitId
+                ?.toLowerCase()
+                .trim()
+                .includes(searchFilter[index].value.toLowerCase().trim()) ||
+              tableData[index1]?.aUserId
+                ?.toLowerCase()
+                .trim() 
+                .includes(searchFilter[index].value.toLowerCase().trim())
+            ) {
+              temp.push(tableData[index1]);
+            }
+          }
+
+          setFilteredData(temp);
+        } else {
+          setFilteredData(tableData);
+        }
+      }
+    } else setFilteredData(tableData);
   }
 
-  const filteredData = filterData(tableData, searchQuery);
+  function handleSetSearchFilters(key: string, value: string) {
+    if (searchFilter.filter((item) => item.key === key).length > 0) {
+      setSearchFilters(
+        searchFilter.filter((item) =>
+          item.key === key ? (item.value = value) : item
+        )
+      );
+    } else {
+      setSearchFilters([
+        ...searchFilter,
+        {
+          key,
+          value,
+        },
+      ]);
+    }
+  }
 
   function renderCell(key: string, data: any): ReactNode {
     const temp = columns?.filter((item) => item?.accessoryKey === key);
@@ -66,28 +115,35 @@ function NextTable({
 
   return (
     <Table
-      className="border border-foreground/20 px-5 py-2 rounded-md"
+      className="border border-foreground/20 px-5 py-2 rounded-md h-full"
       removeWrapper
       topContent={
-        <>
-          <div className="flex justify-between items-center">
-            <NextInput
-              label="Search by user id  or unit id"
-              placeholder="Enter user Name or Email"
-              className="w-[15vw]"
-              onchange={(e: any) => setSearchQuery(e.target.value)}
-            />
-            <DataTableHeader page={page} setPage={setPage} totalPages={10}>
-              {tableToolbar}
-            </DataTableHeader>
-          </div>
-        </>
+        <div className="flex justify-between items-center">
+          <NextInput
+            label="Search by user id  or unit id"
+            placeholder="Enter user Name or Email"
+            className="w-[15vw]"
+            onchange={(e: any) => {
+              handleSetSearchFilters("search", e?.target?.value);
+            }}
+            isClearable={true}
+          />
+          <DataTableHeader
+            page={page}
+            setPage={setPage}
+            totalPages={Math.ceil(
+              (filteredData ? filteredData : tableData)?.length / rows
+            )}
+          >
+            {tableToolbar}
+          </DataTableHeader>
+        </div>
       }
       classNames={{
         wrapper: "rounded-md ",
         thead: " text-black  drop-shadow-lg",
         th: "text-black font-semibold text-md ",
-        base: "max-h-[50vh]  overflow-auto",
+        base: "h-full  overflow-auto",
       }}
     >
       <TableHeader>
@@ -100,17 +156,19 @@ function NextTable({
         ))}
       </TableHeader>
       <TableBody isLoading={isLoading} loadingContent={"Loading ..."}>
-        {filteredData?.map((item: any, index: number) => (
-          <TableRow key={index} className="relative h-[10vh] ">
-            {columns.map((column, index2) => {
-              return (
-                <TableCell key={index2}>
-                  {renderCell(column?.accessoryKey, item)}
-                </TableCell>
-              );
-            })}
-          </TableRow>
-        ))}
+        {filteredData
+          ?.slice((page - 1) * 5, page * 5)
+          ?.map((item: any, index: number) => (
+            <TableRow key={index} className="relative h-[10vh] ">
+              {columns.map((column, index2) => {
+                return (
+                  <TableCell key={index2}>
+                    {renderCell(column?.accessoryKey, item)}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   );

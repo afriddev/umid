@@ -2,7 +2,7 @@ import SampleMain from "./sampletable/SampleMain";
 
 function Home() {
   return (
-    <div>
+    <div className="flex h-full w-full ">
       <SampleMain />{" "}
     </div>
   );
