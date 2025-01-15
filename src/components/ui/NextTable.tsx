@@ -9,13 +9,12 @@ import {
 } from "@nextui-org/react";
 import { ReactNode, useEffect, useState } from "react";
 import DataTableHeader from "../appcomponents/DataTableToolBar";
-import NextInput from "./NextInput";
 
 interface NextTableInterface {
   columns: nextTableColumnType[];
   tableData: any;
   isLoading?: boolean;
-  tableToolbar: ReactNode;
+  TableToolbar: any;
   rows?: number;
 }
 
@@ -23,11 +22,11 @@ function NextTable({
   columns,
   tableData,
   isLoading = false,
-  tableToolbar,
+  TableToolbar,
   rows = 5,
 }: NextTableInterface) {
   const [page, setPage] = useState<number>(1);
-  const [filteredData, setFilteredData] = useState<any>(undefined);
+  const [filteredData, setFilteredData] = useState<any>([]);
 
   const [searchFilter, setSearchFilters] = useState<
     { key: string; value: string }[]
@@ -123,23 +122,15 @@ function NextTable({
       removeWrapper
       topContent={
         <div className="flex justify-between items-center">
-          <NextInput
-            label="Search by user id  or unit id"
-            placeholder="Enter user Name or Email"
-            className="w-[15vw]"
-            onchange={(e: any) => {
-              handleSetSearchFilters("search", e?.target?.value);
-            }}
-            isClearable={true}
-          />
           <DataTableHeader
             page={page}
             setPage={setPage}
             totalPages={Math.ceil(
               (filteredData ? filteredData : tableData)?.length / rows
             )}
+            handleSetSearchFilters={handleSetSearchFilters}
           >
-            {tableToolbar}
+            {<TableToolbar handleSetSearchFilters={handleSetSearchFilters} />}
           </DataTableHeader>
         </div>
       }
@@ -153,9 +144,11 @@ function NextTable({
       <TableHeader>
         {columns.map((column, index) => (
           <TableColumn key={index}>
-            {typeof column?.header === "string"
-              ? column.header
-              : column?.header && column?.header()}
+            <div>
+              {typeof column?.header === "string"
+                ? column.header
+                : column?.header && column?.header()}
+            </div>
           </TableColumn>
         ))}
       </TableHeader>
@@ -163,36 +156,38 @@ function NextTable({
       <TableBody
         isLoading={isLoading}
         loadingContent={"Loading ..."}
-        items={tableData}
+        items={filteredData}
+        emptyContent={"No results found !"}
       >
         {(item: any) => (
           <TableRow key={generateRandomId()}>
             {(columnKey) => {
               return (
-                <TableCell>
+                <TableCell className="py-5">
                   {renderCell(Object.keys(item)[columnKey as any], item)}
                 </TableCell>
               );
             }}
           </TableRow>
         )}
-
-        {/* {filteredData
-          ?.slice((page - 1) * 5, page * 5)
-          ?.map((item: any, index: number) => (
-            <TableRow key={index} className="relative h-[10vh] "> 
-              {columns.map((column, index2) => {
-                return (
-                  <TableCell key={index2}>
-                    {renderCell(column?.accessoryKey, item)}
-                  </TableCell>
-                );
-              })}
-            </TableRow>
-          ))} */}
       </TableBody>
     </Table>
   );
 }
 
 export default NextTable;
+
+/**
+ * Sorting 
+ * 
+const sortedItems = React.useMemo(() => {
+    return [...items].sort((a: User, b: User) => {
+      const first = a[sortDescriptor.column as keyof User] as number;
+      const second = b[sortDescriptor.column as keyof User] as number;
+      const cmp = first < second ? -1 : first > second ? 1 : 0;
+
+      return sortDescriptor.direction === "descending" ? -cmp : cmp;
+    });
+  }, [sortDescriptor, items]);
+ * 
+ */

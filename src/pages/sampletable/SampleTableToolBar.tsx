@@ -1,19 +1,21 @@
-
-import NextButton from "@/components/ui/NextButton";
 import NextInput from "@/components/ui/NextInput";
 // import { Select, SelectItem } from "@nextui-org/react";
 
-function SampleTableToolBar() {
+function SampleTableToolBar({ handleSetSearchFilters }: any) {
 
-  
   return (
     <div className="flex items-center gap-3">
-      {/* <NextInput
+      <NextInput
+        icon="search"
+        startIcon={true}
         label="Search by user id  or unit id"
         placeholder="Enter user Name or Email"
         className="w-[15vw]"
-        isClearable
-      /> */}
+        onchange={(e: any) => {
+          handleSetSearchFilters("search", e?.target?.value);
+        }}
+        isClearable={true}
+      />
       {/* <div>
         <Select
           size="sm"

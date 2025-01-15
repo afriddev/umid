@@ -2,12 +2,12 @@ import { Pagination } from "@nextui-org/react";
 
 import React, { ReactNode } from "react";
 
-
 interface DataTableHeaderInerface {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   totalPages: number;
   children: ReactNode;
+  handleSetSearchFilters: (key: string, value: string) => void;
 }
 
 function DataTableHeader({
@@ -15,9 +15,10 @@ function DataTableHeader({
   setPage,
   totalPages,
   children,
+  handleSetSearchFilters,
 }: DataTableHeaderInerface) {
   return (
-    <div className="flex items-center gap-3 justify-between">
+    <div className="flex items-center gap-3 justify-between w-full">
       {children}
       <div className="flex items-center gap-3">
         <div className="text-nowrap text-foreground-600">{`Page ${page} of ${totalPages}`}</div>

@@ -12,8 +12,8 @@ function SampleMain() {
   }
 
   return (
-    <div className="flex flex-col gap-2  h-full w-full ">
-      <div className="flex w-full justify-end">
+    <div className="flex flex-col gap-2  h-full w-full relative mt-3">
+      <div className="flex w-full justify-end absolute right-4 -top-14">
         <div>
           <NextButton
             icon="user"
@@ -27,6 +27,9 @@ function SampleMain() {
           </NextButton>
         </div>
       </div>
+
+      
+      
       <SampleTable />
 
       {openDialog  && (

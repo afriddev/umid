@@ -9,7 +9,7 @@ function SampleTable() {
       <NextTable
         columns={sampleColumns}
         tableData={studentsData}
-        tableToolbar={<SampleTableToolBar />}
+        TableToolbar={SampleTableToolBar}
       />
     </div>
   );
