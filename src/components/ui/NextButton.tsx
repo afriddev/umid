@@ -1,6 +1,6 @@
 import { Button } from "@nextui-org/react";
 import { ReactNode } from "react";
-import { FaUser } from "react-icons/fa";
+import GetIcon from "../appcomponents/GetIcon";
 
 interface ButtonInterface {
   children: ReactNode;
@@ -35,12 +35,7 @@ function NextButton({
   icon,
   type="button"
 }: ButtonInterface) {
-  function getIcon(): ReactNode {
-    switch (icon) {
-      case "user":
-        return <FaUser />;
-    }
-  }
+  
 
   return (
     <Button
@@ -54,8 +49,8 @@ function NextButton({
       isLoading={isLoading}
       className={` w-fit ${className}`}
       onClick={onclick}
-      startContent={startIcon ? getIcon() : false}
-      endContent={endIcon && !startIcon ? getIcon() : false}
+      startContent={startIcon ? <GetIcon  icon={icon} /> : false}
+      endContent={endIcon && !startIcon ? <GetIcon  icon={icon} /> : false}
     >
       {children}
     </Button>

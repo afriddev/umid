@@ -107,7 +107,9 @@ function NextTable({
               ? "True"
               : "False"
             : data[key]
-          : "-"}
+          : data[key].toString() === "0"
+            ? "0"
+            : "-"}
       </label>
     );
   }
