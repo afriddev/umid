@@ -3,29 +3,43 @@ import NextInput from "@/components/ui/NextInput";
 import { Form } from "@nextui-org/react";
 import { Select, SelectItem } from "@nextui-org/react";
 import { RadioGroup, Radio } from "@nextui-org/react";
-import { useRef } from "react";
 
 
-function CreateOrganisation() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    let data = Object.fromEntries(new FormData(e.currentTarget));
-    console.log(data);
-    if (formRef.current) {
-      formRef.current.reset();
-    }
-   
+interface CreateOrganisationInteraface {
+  handleAddOrganisation: (data:any) => void;
+}
+
+function CreateOrganisation({
+  handleAddOrganisation,
+}: CreateOrganisationInteraface) {
+  function handleAddOrganisationClick(data: {
+    ref: string;
+    org: string;
+    level: string;
+    endLevel: string;
+  }) {
+    const tempData = {
+      aUnitName: data?.org,
+      aParentUnitId: data?.ref ?? "P001",
+      aLevel: data.level.slice(2, data?.level?.length),
+      aEndLevel: false,
+      aUserId: "U003",
+      aEntryDate: "2023-03-01",
+      aUpdatedAt: "2023-12-17",
+    };
+    handleAddOrganisation(tempData)
   }
-
 
   return (
     <div>
       <Form
-      ref={formRef}
         className="px-4 py-7 flex flex-col gap-6"
         validationBehavior="native"
-        onSubmit={handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault();
+          let data = Object.fromEntries(new FormData(e.currentTarget));
+          handleAddOrganisationClick(data as any);
+        }}
       >
         <div className="flex flex-col gap-5 w-full">
           <NextInput
@@ -42,6 +56,7 @@ function CreateOrganisation() {
             isRequired={false}
             icon="manageOrg"
             startIcon={true}
+            name="ref"
           />
           <Select
             color="primary"
@@ -52,24 +67,28 @@ function CreateOrganisation() {
             label="Select Level"
             className="w-full  "
             errorMessage="Please select Level"
+            name="level"
           >
-            <SelectItem>01</SelectItem>
-            <SelectItem>02</SelectItem>
-            <SelectItem>03</SelectItem>
-            <SelectItem>04</SelectItem>
-            <SelectItem>05</SelectItem>
+            <SelectItem>1</SelectItem>
+            <SelectItem>2</SelectItem>
+            <SelectItem>3</SelectItem>
+            <SelectItem>4</SelectItem>
+            <SelectItem>5</SelectItem>
           </Select>
           <RadioGroup
+            name="endLevel"
             label="Select Is End Level for organisation"
             orientation="horizontal"
-             defaultValue={"no"}
+            defaultValue={"no"}
           >
             <Radio value="yes">Yes</Radio>
             <Radio value="no">No</Radio>
           </RadioGroup>
         </div>
         <div className="w-full flex  px-10   justify-center text-center pt-10">
-          <NextButton type="submit" className="w-full" >Submit</NextButton>
+          <NextButton type="submit" className="w-full">
+            Submit
+          </NextButton>
         </div>
       
 

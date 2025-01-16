@@ -1,15 +1,13 @@
-import { Input, Pagination } from "@nextui-org/react";
+import { Pagination } from "@nextui-org/react";
 
 import React, { ReactNode } from "react";
-
 
 interface DataTableHeaderInerface {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   totalPages: number;
   children: ReactNode;
-  searchquery?: string;
-  setSearchQuery: (query: string) => void;
+  handleSetSearchFilters: (key: string, value: string) => void;
 }
 
 function DataTableHeader({
@@ -17,20 +15,11 @@ function DataTableHeader({
   setPage,
   totalPages,
   children,
-  searchquery,
-  setSearchQuery,
+  handleSetSearchFilters,
 }: DataTableHeaderInerface) {
   return (
-    <div className="flex items-center gap-3 justify-between">
+    <div className="flex items-center gap-3 justify-between w-full">
       {children}
-      <Input
-          id="search"
-          type="text"
-          placeholder="Enter keyword"
-          value={searchquery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="border px-2 py-1 rounded"
-        />
       <div className="flex items-center gap-3">
         <div className="text-nowrap text-foreground-600">{`Page ${page} of ${totalPages}`}</div>
         <div className="flex w-full justify-center">
