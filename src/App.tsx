@@ -11,15 +11,17 @@ function App() {
   useEffect(() => {
     dispatch({
       type: "addPathName",
-      payload: pathname,  
+      payload: pathname,
     });
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route element={<Home />} path="/" />
-      <Route element={<Home />} path="/dashboard" />
-    </Routes>
+    <div className="h-full w-full  ">
+      <Routes>
+        <Route element={<Home />} path="/" />
+        <Route element={<Home />} path="/dashboard" />
+      </Routes>
+    </div>
   );
 }
 

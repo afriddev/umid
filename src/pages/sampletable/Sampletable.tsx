@@ -1,15 +1,23 @@
 import NextTable from "@/components/ui/NextTable";
 import sampleColumns from "./SampleColumns";
-import studentsData from "./data";
 import SampleTableToolBar from "./SampleTableToolBar";
 
-function SampleTable() {
+
+interface SampleTableInterface{
+
+  tableData:any
+
+  
+
+}
+
+function SampleTable({tableData}:SampleTableInterface) {
   return (
-    <div>
+    <div className="flex h-full">
       <NextTable
         columns={sampleColumns}
-        tableData={studentsData}
-        tableToolbar={<SampleTableToolBar />}
+        tableData={tableData}
+        TableToolbar={SampleTableToolBar}
       />
     </div>
   );

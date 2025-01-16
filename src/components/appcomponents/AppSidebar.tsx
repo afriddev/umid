@@ -28,7 +28,7 @@ function AppSidebar() {
     key: string,
     title: string,
     desc: string | null,
-    path: string | null,  
+    path: string | null,
     parentKey?: string | null
   ) {
     dispatch({
@@ -55,9 +55,9 @@ function AppSidebar() {
               </div>
 
               <div className="flex flex-col gap-3">
-                {menuItem?.routes?.map((route: routeType, index) => {
+                {menuItem?.routes?.map((route: routeType, index1) => {
                   return (
-                    <div key={index}>
+                    <div key={index1}>
                       {!route?.subPages && (
                         <div
                           onClick={() => {
@@ -94,8 +94,11 @@ function AppSidebar() {
                                   content: "pl-5 -mt-3  flex flex-col gap-3",
                                 }}
                               >
-                                {route?.subPages?.map((item, index) => (
-                                  <div className="flex items-center gap-3 text-sidebar-foreground cursor-pointer">
+                                {route?.subPages?.map((item, index2) => (
+                                  <div
+                                    key={index2}
+                                    className="flex items-center gap-3 text-sidebar-foreground cursor-pointer"
+                                  >
                                     <GetIcon icon={item?.icon} />
                                     <div>{item?.title}</div>
                                   </div>

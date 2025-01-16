@@ -11,28 +11,29 @@ interface organisationType {
 }
 
 const sampleColumns: columnDef<organisationType>[] = [
- 
-
   {
     accessoryKey: "aUnitName",
     header: "Full Name",
   },
 
   {
-    accessoryKey: "aUserId",
-    header: "User Id",
-  },
-  {
     accessoryKey: "aParentUnitId",
     header: "Parent Unit id ",
   },
+
   {
     accessoryKey: "aLevel",
     header: "Level",
   },
+
   {
     accessoryKey: "aEndLevel",
     header: "End Level",
+  },
+
+  {
+    accessoryKey: "aUserId",
+    header: "User Id",
   },
 
   {
@@ -41,10 +42,8 @@ const sampleColumns: columnDef<organisationType>[] = [
   },
   {
     accessoryKey: "aUpdatedAt",
-    header: "Updated At", 
+    header: "Updated At",
   },
-
-  
 ];
 
 export default sampleColumns;

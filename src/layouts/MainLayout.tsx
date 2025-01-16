@@ -19,7 +19,7 @@ function MainLayout({ children }: MainLayoutInterface) {
       <div className="h-screen w-screen flex flex-col bg-background ">
         <div className="w-full h-full flex items-center">
           <div
-            className={`${openSidebar ? "flex flex-col " : "hidden"}  absolute w-fit z-[990] lg:relative  lg:flex lg:flex-col gap-4 h-full lg:w-[17vw] bg-sidebar text-sidebar-foreground  `}
+            className={`${openSidebar ? "flex flex-col " : "hidden"}  absolute w-fit z-[990] lg:relative  lg:flex lg:flex-col gap-4 h-full lg:w-[21vw] bg-sidebar text-sidebar-foreground  `}
           >
             <div className="h-[7vh] border-b  flex items-center bg-background justify-center border-sidebar-foreground/30">
               <div
@@ -42,9 +42,9 @@ function MainLayout({ children }: MainLayoutInterface) {
                 <AppNavbar />
               </div>
             </div>
-            <div className="w-full   h-full p-3">
+            <div className="w-full   h-full flex flex-col p-3">
               <AppMenu />
-              <div className=" ml-2 mt-2 p-1 text-foreground">{children}</div>
+              <div className="mt-2 mb-2 text-foreground h-full  flex ">{children}</div>
             </div>
           </div>
         </div>
