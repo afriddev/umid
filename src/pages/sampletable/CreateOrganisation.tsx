@@ -3,19 +3,29 @@ import NextInput from "@/components/ui/NextInput";
 import { Form } from "@nextui-org/react";
 import { Select, SelectItem } from "@nextui-org/react";
 import { RadioGroup, Radio } from "@nextui-org/react";
+import { useRef } from "react";
+
 
 function CreateOrganisation() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    let data = Object.fromEntries(new FormData(e.currentTarget));
+    console.log(data);
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+   
+  }
+
+
   return (
     <div>
       <Form
+      ref={formRef}
         className="px-4 py-7 flex flex-col gap-6"
         validationBehavior="native"
-        onSubmit={(e) => {
-          e.preventDefault();
-          let data = Object.fromEntries(new FormData(e.currentTarget));
-          console.log(data);
-        }}
-
+        onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-5 w-full">
           <NextInput
@@ -61,6 +71,8 @@ function CreateOrganisation() {
         <div className="w-full flex  px-10   justify-center text-center pt-10">
           <NextButton type="submit" className="w-full" >Submit</NextButton>
         </div>
+      
+
       </Form>
     </div>
   );

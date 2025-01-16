@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import { ReactNode, useState } from "react";
 import DataTableHeader from "../appcomponents/DataTableToolBar";
-import NextInput from "./NextInput";
+
 
 interface NextTableInterface {
   columns: nextTableColumnType[];
@@ -71,13 +71,10 @@ function NextTable({
       topContent={
         <>
           <div className="flex justify-between items-center">
-            <NextInput
-              label="Search by user id  or unit id"
-              placeholder="Enter user Name or Email"
-              className="w-[15vw]"
-              onchange={(e: any) => setSearchQuery(e.target.value)}
-            />
-            <DataTableHeader page={page} setPage={setPage} totalPages={10}>
+          
+            <DataTableHeader page={page} setPage={setPage} totalPages={10}
+              searchquery={searchQuery}
+              setSearchQuery={setSearchQuery}>
               {tableToolbar}
             </DataTableHeader>
           </div>
