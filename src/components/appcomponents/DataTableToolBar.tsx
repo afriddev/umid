@@ -1,4 +1,4 @@
-import { Pagination } from "@nextui-org/react";
+import { Input, Pagination } from "@nextui-org/react";
 
 import React, { ReactNode } from "react";
 
@@ -23,7 +23,7 @@ function DataTableHeader({
   return (
     <div className="flex items-center gap-3 justify-between">
       {children}
-      <input
+      <Input
           id="search"
           type="text"
           placeholder="Enter keyword"
