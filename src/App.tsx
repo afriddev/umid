@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useAppContext } from "./components/appcomponents/AppContext";
 
 import { create } from "zustand";
+import Login from "./pages/login/Login";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
   const { dispatch } = useAppContext();
@@ -35,10 +37,17 @@ function App() {
 
   return (
     <div className="h-full w-full  ">
-      {/* <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<Home />} path="/dashboard" />
-      </Routes> */}
+      <Routes>
+        <Route element={<Login />} path="/" />
+        <Route
+          element={
+            <MainLayout>
+              <Home />
+            </MainLayout>
+          }
+          path="/dashboard"
+        />
+      </Routes>
     </div>
   );
 }

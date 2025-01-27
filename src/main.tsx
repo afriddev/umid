@@ -5,16 +5,13 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import App from "./App.tsx";
 import { Provider } from "./provider.tsx";
-import MainLayout from "./layouts/MainLayout.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
         <NextThemesProvider {...{ attribute: "class", defaultTheme: "" }}>
-          <MainLayout>
-            <App />
-          </MainLayout>
+          <App />
         </NextThemesProvider>
       </Provider>
     </BrowserRouter>
