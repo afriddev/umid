@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/login/Login";
 import MainLayout from "./layouts/MainLayout";
 import { useEffect } from "react";
+import HomeV1 from "./pages/homepages/HomeV1";
 
 function App() {
   const loggedIn = localStorage.getItem("loggedIn")
@@ -55,6 +56,7 @@ function App() {
     <div className="h-full w-full  ">
 
       <Routes>
+        <Route element={<HomeV1 />} path="/" />
         <Route element={<Login />} path="/login" />
         <Route
           element={
