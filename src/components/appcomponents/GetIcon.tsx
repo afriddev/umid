@@ -13,6 +13,8 @@ import { IoChevronUpOutline } from "react-icons/io5";
 import { FaCaretRight } from "react-icons/fa6";
 import { GoTriangleUp } from "react-icons/go";
 import { FaUser } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+import { ImSpinner11 } from "react-icons/im";
 
 
 interface GetIconInterface {
@@ -68,6 +70,14 @@ function GetIcon({ icon, className }: GetIconInterface) {
       
       case "user":
         return <FaUser className={`  w-4 h-4 ${className} `} />;
+      
+      case "lock":
+        return <FaLock className={`  w-4 h-4 ${className} `} />;
+        
+      case "regenerate":
+        return <ImSpinner11 className={`  w-4 h-4 ${className} `} />;
+
+      
       
     }
   }
