@@ -77,7 +77,8 @@ function NextInput({
       )}
 
       <Input
-      aria-labelledby={label ?? placeholder}
+      autoComplete="off"
+        aria-labelledby={label ?? placeholder}
         color="primary"
         errorMessage={errorMessage}
         variant={variant}
@@ -93,21 +94,21 @@ function NextInput({
         onChange={onchange}
         labelPlacement={labelPlacement}
         isClearable={isClearable}
-        onClear={() => {
-          onchange &&
-            onchange({
-              e: {
-                target: {
-                  value: "",
-                },
-              },
-            });
-        }}
+        // onClear={() => {
+        //   onchange &&
+        //     onchange({
+        //       e: {
+        //         target: {
+        //           value: "",
+        //         },
+        //       },
+        //     });
+        // }}
         size="md"
         className={` ${className} `}
         classNames={{
           input: ` ${icon && "pl-4"} ${inputClassName} text-sm`,
-          label: ` ${icon && "pl-4"} ${labelClassName}  text-nowrap`,
+          label: ` ${icon && "pl-4"} ${labelClassName}  text-fnowrap`,
         }}
         fullWidth={true}
         endContent={
