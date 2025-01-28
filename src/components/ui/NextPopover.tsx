@@ -14,7 +14,9 @@ function NextPopover({
 }: NextPopoverInterafce) {
   return (
     <Popover placement={contentPacement}>
-      <PopoverTrigger>{trigger}</PopoverTrigger>
+      <PopoverTrigger>
+        {<div className="text-lg hover:text-[#55E6A5] hover:border-b duration-300 ease-in-out hover:border-[#55E6A5] hover:scale-105  cursor-pointer">{trigger}</div>}
+      </PopoverTrigger>
       <PopoverContent>{content}</PopoverContent>
     </Popover>
   );
