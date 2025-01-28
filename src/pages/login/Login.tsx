@@ -123,7 +123,9 @@ function Login() {
                 OR
               </div>
               <div className="flex gap-10">
-                <NextButton className="rounded-full bg-blue-900  ">
+                <NextButton onclick={()=>{
+                  navigate("/")
+                }} className="rounded-full bg-blue-900  ">
                   Goto Website
                 </NextButton>
                 <NextButton className="rounded-full bg-purple-700  ">
