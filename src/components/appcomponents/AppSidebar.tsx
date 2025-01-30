@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 import { useAppContext } from "./AppContext";
 import { IoChevronUpOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";

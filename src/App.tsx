@@ -5,10 +5,12 @@ import Login from "./pages/login/Login";
 import MainLayout from "./layouts/MainLayout";
 import { useEffect } from "react";
 import HomeV1 from "./pages/homepages/HomeV1";
+import HomeV5 from "./pages/homepages/HomeV5";
+import Register from "./pages/register/Register";
 
 function App() {
-  const loggedIn = localStorage.getItem("loggedIn")
-  const navigate = useNavigate()
+  const loggedIn = localStorage.getItem("loggedIn");
+  const navigate = useNavigate();
 
   // useEffect(()=>{
 
@@ -20,9 +22,6 @@ function App() {
   //   else navigate("/login")
 
   // },[loggedIn])
-
-
-
 
   // const { dispatch } = useAppContext();
   // const { pathname } = useLocation();
@@ -48,15 +47,12 @@ function App() {
   //   };
   // });
 
-
-
-
-
   return (
-    <div className="h-full w-full  ">
-
+    <div className="h-full w-full ">
       <Routes>
         <Route element={<HomeV1 />} path="/" />
+        <Route element={<Register />} path="/register" />
+        <Route element={<HomeV5 />} path="/forms" />
         <Route element={<Login />} path="/login" />
         <Route
           element={

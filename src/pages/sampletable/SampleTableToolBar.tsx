@@ -1,5 +1,5 @@
 import NextInput from "@/components/ui/NextInput";
-// import { Select, SelectItem } from "@nextui-org/react";
+// import { Select, SelectItem } from "@heroui/react";
 
 function SampleTableToolBar({ handleSetSearchFilters }: any) {
 

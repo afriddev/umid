@@ -1,6 +1,6 @@
 import type { NavigateOptions } from "react-router-dom";
 
-import { NextUIProvider } from "@nextui-org/system";
+import { HeroUIProvider } from "@heroui/system";
 import { useNavigate } from "react-router-dom";
 import AppContext from "./components/appcomponents/AppContext";
 
@@ -20,7 +20,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
 
   return (
     <AppContext>
-      <NextUIProvider navigate={navigate}>{children}</NextUIProvider>
+      <HeroUIProvider navigate={navigate}>{children}</HeroUIProvider>
     </AppContext>
   );
 }

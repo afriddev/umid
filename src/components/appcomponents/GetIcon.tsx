@@ -12,10 +12,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoChevronUpOutline } from "react-icons/io5";
 import { FaCaretRight } from "react-icons/fa6";
 import { GoTriangleUp } from "react-icons/go";
-import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { ImSpinner11 } from "react-icons/im";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import { FaAddressCard } from "react-icons/fa";
+import { FaStarOfLife } from "react-icons/fa";
 
 interface GetIconInterface {
   icon: string;
@@ -67,16 +71,32 @@ function GetIcon({ icon, className }: GetIconInterface) {
 
       case "triangleRight":
         return <FaCaretRight className={`  w-4 h-4 ${className} `} />;
-      
+
       case "user":
-        return <FaUser className={`  w-4 h-4 ${className} `} />;
-      
+        return <AccountCircleIcon className={`  w-4 h-4 ${className} `} />;
+
       case "lock":
         return <FaLock className={`  w-4 h-4 ${className} `} />;
-        
+
       case "regenerate":
         return <ImSpinner11 className={`  w-4 h-4 ${className} `} />;
 
+      case "calender":
+        return (
+          <CalendarMonthOutlinedIcon className={`  w-4 h-4 ${className} `} />
+        );
+
+      case "call":
+        return <CallOutlinedIcon className={`  w-4 h-4 ${className} `} />;
+
+      case "email":
+        return <EmailOutlinedIcon className={`  w-4 h-4 ${className} `} />;
+      
+      case "card":
+        return <FaAddressCard className={`  w-5 h-5 mt-[0.2vh] ${className} `} />;
+      
+      case "star":
+        return <FaStarOfLife className={`  w-2 h-2 ${className} `} />;
       
       
     }
