@@ -52,7 +52,7 @@ function HomeV1() {
           <div className="text-[60px] font-semibold gap-4  flex items-center">
             Welcome to <img className="h-24 rounded-full" src="about-2.jpg" />
           </div>
-          <div className="text-[40px]">
+          <div className="text-[30px]">
             SMART HEALTH CARD SYSTEM IN INDIAN RAILWAYS
           </div>
           <div className="text-[40px]">

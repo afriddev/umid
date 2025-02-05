@@ -5,6 +5,8 @@ import Login from "./pages/login/Login";
 import MainLayout from "./layouts/MainLayout";
 import { useEffect } from "react";
 import HomeV1 from "./pages/homepages/HomeV1";
+import Homev2 from "./pages/homepages/Homev2";
+import HomeV3 from "./pages/homepages/HomeV3";
 
 function App() {
   const loggedIn = localStorage.getItem("loggedIn")
@@ -57,6 +59,8 @@ function App() {
 
       <Routes>
         <Route element={<HomeV1 />} path="/" />
+        <Route element={<Homev2 />} path="/v2" />
+        <Route element={<HomeV3 />} path="/v3" />
         <Route element={<Login />} path="/login" />
         <Route
           element={
