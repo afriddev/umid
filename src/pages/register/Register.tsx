@@ -14,8 +14,7 @@ import {
 } from "./regexPatterns";
 
 function Register() {
-  const [step, setStep] = useState<number>(0);
-
+  const [step, setStep] = useState<number>(4);
   const {
     setError,
     register,
@@ -73,7 +72,12 @@ function Register() {
       temp = temp?.filter((_, index) => index != 1);
     }
 
-    if (value.match(/\W/) && /\p{Lu}/u.test(value) && value.length >= 9 && value.length <=12) {
+    if (
+      value.match(/\W/) &&
+      /\p{Lu}/u.test(value) &&
+      value?.length >= 9 &&
+      value?.length <= 12
+    ) {
       temp = [];
     }
     return temp;
@@ -91,6 +95,11 @@ function Register() {
         message,
       });
     }
+
+    if (field === "panNumber") {
+      value.repl;
+    }
+
     if (field === "password1") {
       if (handlePassordChange(watch("password1")).length !== 0) {
         setError("password1", {
@@ -182,14 +191,13 @@ function Register() {
               </div>
             )}
 
-            <div className="w-[30vw] flex">
+            <div className="w-[20vw] flex">
               <Controller
                 name="dob"
                 control={control}
                 disabled={step !== 0}
                 rules={{
                   required: "Please Enter Date Of Birth",
-
                   onChange(event) {
                     handleClearError(
                       event,
@@ -392,9 +400,30 @@ function Register() {
                 <NextInput
                   isDisabled={watch("emailVerificationEnabled")}
                   className="w-[20vw]"
+                  {...register("userId", {
+                    required: "Please Enter User Id",
+                    disabled: watch("emailVerificationEnabled"),
+                  })}
+                  onchange={(e) => {
+                    handleClearError(e, "userId", "Please Enter User Id");
+                  }}
+                  startIcon={true}
+                  label="User Id"
+                  icon="user"
+                  isRequired={true}
+                  errorMessage={errors?.userId?.message as string}
+                />
+              </div>
+              <div className="w-[20vw]">
+                <NextInput
+                  isDisabled={
+                    watch("emailVerificationEnabled") || !watch("userId")
+                  }
+                  className="w-[20vw]"
                   {...register("password1", {
                     required: "Please Enter Password",
-                    disabled: watch("emailVerificationEnabled"),
+                    disabled:
+                      watch("emailVerificationEnabled") || !watch("userId"),
                   })}
                   onchange={(e) => {
                     handleClearError(e, "password1", "Please Enter Password");
@@ -403,7 +432,7 @@ function Register() {
                   label="Password"
                   icon="user"
                   isRequired={true}
-                  errorMessage={errors.password1?.message as string}
+                  errorMessage={errors?.password1?.message as string}
                 />
               </div>
 
@@ -429,7 +458,7 @@ function Register() {
                   label="Re Enter Password"
                   icon="card"
                   isRequired={true}
-                  errorMessage={errors.password2?.message as string}
+                  errorMessage={errors?.password2?.message as string}
                 />
               </div>
               <div>

@@ -7,7 +7,7 @@ interface InputInterface {
   label?: string;
   labelPlacement?: "inside" | "outside" | "outside-left";
   variant?: "bordered" | "flat" | "faded";
-  errorMessage?: string;
+  errorMessage?: ReactNode;
   isRequired?: boolean;
   name?: string;
   type?: string;
@@ -24,7 +24,7 @@ interface InputInterface {
   inputClassName?: string;
   labelClassName?: string;
   onchange?: (e: any) => void;
-  value?:string
+  value?: string;
 }
 
 const NextInput = forwardRef<HTMLInputElement, InputInterface>(
@@ -50,7 +50,7 @@ const NextInput = forwardRef<HTMLInputElement, InputInterface>(
       inputClassName,
       labelClassName,
       onchange,
-      value
+      value,
     },
     ref
   ) => {
