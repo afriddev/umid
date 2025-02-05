@@ -1,8 +1,8 @@
 import NextButton from "@/components/ui/NextButton";
 import NextInput from "@/components/ui/NextInput";
-import { Form } from "@nextui-org/react";
-import { Select, SelectItem } from "@nextui-org/react";
-import { RadioGroup, Radio } from "@nextui-org/react";
+import { Form } from "@heroui/react";
+import { Select, SelectItem } from "@heroui/react";
+import { RadioGroup, Radio } from "@heroui/react";
 
 
 interface CreateOrganisationInteraface {

@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 import { ReactNode } from "react";
 import GetIcon from "../appcomponents/GetIcon";
 

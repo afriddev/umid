@@ -1,6 +1,6 @@
 import { LuUser } from "react-icons/lu";
 import GetIcon from "./GetIcon";
-import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/react";
 import { useAppContext } from "./AppContext";
 
 function AppNavbar() {
